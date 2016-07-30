@@ -1,6 +1,6 @@
 var $ = require('jquery');
-var makeBackgroundRed = require('./background');
+var verify = require('./verify');
 
 $(document).ready(function() {
-    makeBackgroundRed();
+    verify();
 });
