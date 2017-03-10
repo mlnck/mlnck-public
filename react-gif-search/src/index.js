@@ -1,10 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './containers/App';
+import {Provider} from 'react-redux';
+import configureStore from './store/configureStore';
 import './index.css';
 
-// https://blog.tighten.co/react-101-building-a-gif-search-engine
+const store = configureStore();
+
 ReactDOM.render(
-  <App />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('app')
 );

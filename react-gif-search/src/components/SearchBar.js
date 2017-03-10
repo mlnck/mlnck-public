@@ -2,24 +2,15 @@ import React from 'react';
 
 class SearchBar extends React.Component
 {
-  constructor(props)
-  {
-    super(props);
-    this.state = {term:''}
-  }
-
   onInputChange(term)
-  {
-    this.setState({term});
-    this.props.onTermChange(term)
-  }
+  { this.props.onTermChange(term) }
 
   render(){
     return (
       <div className="search">
         <input placeholder="Enter text to search for gifs!" onChange={e => this.onInputChange(e.target.value)} />
       </div>
-    )
+    );
   }
 }
 
