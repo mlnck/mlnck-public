@@ -22,6 +22,8 @@ class App extends React.Component{
   }
 }
 
+//pulll request comment
+
 function mapStateToProps(state){
   return {
     gifs: state.gifs.data,
