@@ -1,0 +1,30 @@
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
+
+class Header extends React.Component
+{
+  render(){
+    return (
+      <nav className="navbar navbar-default">
+        <div className="container-fluid">
+          <Link to="/" className="navbar-brand">React2Gifs</Link>
+        </div>
+        <ul className="nav navbar-nav navbar-right">
+          <li className="nav-item">
+            <Link className="nav-link" to="/login">Login</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/signup">Sign Up</Link>
+          </li>
+        </ul>
+      </nav>
+    );
+  }
+}
+
+function mapStateToProps(state){
+  return {}
+}
+
+export default connect(mapStateToProps)(Header);

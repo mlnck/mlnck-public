@@ -7,7 +7,7 @@ import GifModal from '../components/GifModal';
 import SearchBar from '../components/SearchBar';
 import '../App.css';
 
-class App extends React.Component{
+class Home extends React.Component{
   render()
   {
     return(
@@ -21,8 +21,6 @@ class App extends React.Component{
     );
   }
 }
-
-//pulll request comment
 
 function mapStateToProps(state){
   return {
@@ -39,4 +37,4 @@ function mapDispatchToProps(dispatch)
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
