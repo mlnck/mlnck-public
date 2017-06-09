@@ -5,12 +5,13 @@ It returns a "pretty print" version of what you would console log.
 
 With the built in _console.log_ method you would see something along the lines of:
 ![Console Log Collapsed](console-log-collapsed.png)
-  and when you expand it:
+and when you expand it:
 ![Console Log Expanded](console-log-expanded.png)
 
 With the _console.debug_ method you will see something along the lines of:
 ![Console Debug Collapsed](console-debug-collapsed.png)
-  and when you expand it:
+
+and when you expand it:
 ![Console Debug Expanded](console-debug-expanded.png)
 
 ## Usage:
