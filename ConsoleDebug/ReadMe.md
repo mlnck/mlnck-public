@@ -52,7 +52,7 @@ If you want to override the log level for a single console statement, you can do
 ```
 
 Lastly, although it is not fully supported by all browsers, you can enable profiling.  
-_**WARNING:**_ This will _greatly_ increase load time and increase memory usage.
+_**WARNING:**_ This will _greatly_ increase load time and memory usage.
 ```javascript
   console.DO_PROFILE = true;
 ```
