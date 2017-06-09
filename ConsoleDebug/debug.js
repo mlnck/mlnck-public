@@ -1,13 +1,37 @@
 if(!window.console){window.console = {};}
+  //log level pseudo-constants
+  console.DEBUG = 'CONSOLE_DEBUG_LOG_DEBUG'; console.NORM = 'CONSOLE_DEBUG_LOG_NORMAL'; console.PROD = 'CONSOLE_DEBUG_LOG_PRODUCTION';
+  //type pseudo-constants
+  console.INFO = 'CONSOLE_DEBUG_INFO'; console.ERR = 'CONSOLE_DEBUG_ERR'; console.WARN = 'CONSOLE_DEBUG_WARN';
+  console.DO_PROFILE = false;
+
+  console.setLogLevel = function(s)
+  { this.logLevel = (s === console.NORM) ? console.NORM : (s === console.PROD) ? console.PROD : console.DEBUG; }
+  console.isLevel = function(s){
+    this.OVERRIDE_GLOBAL = (s === console.NORM) ? console.NORM : (s === console.PROD) ? console.PROD : console.DEBUG;
+    return this;
+  }
   console.debug = function(...args){
-    console.profile('debug profile');//Not fully supported
+    if(console.DO_PROFILE){ console.profile('debug profile'); }//Not fully supported + Increases Load Time Drastically
     console.time('debugged in');
+
+    if(console.logLevel && console.logLevel != console.DEBUG){ args.splice(0,0,console.logLevel); }
+    if(console.OVERRIDE_GLOBAL){ args.splice(0,0,console.OVERRIDE_GLOBAL); delete console.OVERRIDE_GLOBAL; }
+
     let debugType;
     switch(args[0])
     {
-      case 'INFO': debugType = 'info'; break;
-      case 'ERR': debugType = 'error'; break;
-      case 'WARN': debugType = 'warn'; break;
+      case 'CONSOLE_DEBUG_INFO': debugType = 'info'; break;
+      case 'CONSOLE_DEBUG_ERR': debugType = 'error'; break;
+      case 'CONSOLE_DEBUG_WARN': debugType = 'warn'; break;
+      case 'CONSOLE_DEBUG_LOG_PRODUCTION': return false;
+      case 'CONSOLE_DEBUG_LOG_NORMAL':
+        debugType = (~String(args[1]).indexOf('CONSOLE_DEBUG_')) ? args[1].replace('CONSOLE_DEBUG_','').toLowerCase() : 'log' ;
+        if(debugType === 'err'){ debugType = 'error'; }
+        (debugType === 'log') ? args.splice(0,1) : args.splice(0,2) ;
+        console[debugType](args);
+        return;
+      case 'CONSOLE_DEBUG_LOG_DEBUG': args.splice(0,1);
       default : debugType = 'log';
     }
     console.count('--START DEBUG BLOCK--');
@@ -24,7 +48,7 @@ if(!window.console){window.console = {};}
     console.groupCollapsed('Stack Trace:'); console.trace(); console.groupEnd();
     console.timeEnd('debugged in');
     console.log('--END DEBUG BLOCK--');console.log('');console.log('');
-    console.profileEnd('debug profile');//Not fully supported
+    if(console.DO_PROFILE){ console.profileEnd('debug profile'); }//Not fully supported + Increases Load Time Drastically
     function checkForObject(s,o)
     {
       if(typeof(o) === 'object'){ console[debugType]('Tabular data for item '+s.replace(')','')+'↴'); }
