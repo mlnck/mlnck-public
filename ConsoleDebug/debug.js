@@ -1,3 +1,4 @@
+//author @mlnck
 if(!window.console){window.console = {};}
   //log level pseudo-constants
   console.DEBUG = 'CONSOLE_DEBUG_LOG_DEBUG'; console.NORM = 'CONSOLE_DEBUG_LOG_NORMAL'; console.PROD = 'CONSOLE_DEBUG_LOG_PRODUCTION';
