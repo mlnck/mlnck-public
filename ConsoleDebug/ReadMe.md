@@ -4,10 +4,14 @@ This allows you to more easily see the variables, strings, and objects that you 
 It returns a "pretty print" version of what you would console log.
 
 With the built in _console.log_ method you would see something along the lines of:
-![Console Log](console-log.png)
+![Console Log Collapsed](console-log-collapsed.png)
+  and when you expand it:
+![Console Log Expanded](console-log-expanded.png)
 
 With the _console.debug_ method you will see something along the lines of:
-![Console Log](console-debug.png)
+![Console Debug Collapsed](console-debug-collapsed.png)
+  and when you expand it:
+![Console Debug Expanded](console-debug-expanded.png)
 
 ## Usage:
 Import the script into your page.
@@ -50,3 +54,7 @@ _**WARNING:**_ This will _greatly_ decrease load time and increase memory usage.
 ```javascript
   console.DO_PROFILE = true;
 ```
+
+##### _Additional Notes:_
+* There are 2 blank lines after each debug block. This is intentional to help differentiate the individual method calls.
+* Due to the _console.debug_ method handling all logging, the line numbers will not match up to where the _console.debug_ method was called in the original javascript code. To handle this, at the end of the _DEBUG BLOCK_, there is a collapsed _Stack Trace:_ object. If you expand that you can see where the _console.debug_ call originated from.

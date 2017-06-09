@@ -16,9 +16,10 @@ if(!window.console){window.console = {};}
     console.time('debugged in');
 
     if(console.logLevel && console.logLevel != console.DEBUG){ args.splice(0,0,console.logLevel); }
-    if(console.OVERRIDE_GLOBAL){ args.splice(0,0,console.OVERRIDE_GLOBAL); delete console.OVERRIDE_GLOBAL; }
+    if(console.OVERRIDE_GLOBAL)
+    { if(this.logLevel){ args.splice(0,1); } args.splice(0,0,console.OVERRIDE_GLOBAL); delete console.OVERRIDE_GLOBAL; }
 
-    let debugType;
+    let debugType, settingOffset=0;
     switch(args[0])
     {
       case 'CONSOLE_DEBUG_INFO': debugType = 'info'; break;
@@ -26,19 +27,20 @@ if(!window.console){window.console = {};}
       case 'CONSOLE_DEBUG_WARN': debugType = 'warn'; break;
       case 'CONSOLE_DEBUG_LOG_PRODUCTION': return false;
       case 'CONSOLE_DEBUG_LOG_NORMAL':
-        debugType = (~String(args[1]).indexOf('CONSOLE_DEBUG_')) ? args[1].replace('CONSOLE_DEBUG_','').toLowerCase() : 'log' ;
+        debugType = checkTypeFromSettings(args[1]);
         if(debugType === 'err'){ debugType = 'error'; }
         (debugType === 'log') ? args.splice(0,1) : args.splice(0,2) ;
         console[debugType](args);
         return;
-      case 'CONSOLE_DEBUG_LOG_DEBUG': args.splice(0,1);
+      case 'CONSOLE_DEBUG_LOG_DEBUG': args.splice(0,1); debugType = checkTypeFromSettings(args[0]); break;
       default : debugType = 'log';
     }
     console.count('--START DEBUG BLOCK--');
     console.timeStamp('started at');//Not fully supported
     for(let i=0; i<args.length; i++)
     {
-      let itemStr = (i+1)+') ';
+      if(~String(args[i]).indexOf('CONSOLE_DEBUG_')){ settingOffset++; continue; }//catchall to remove debug settings from being logged
+      let itemStr = (i+(1-settingOffset))+') ';
       if(typeof(args[i]) === 'string' && args[i].charAt(args[i].length-1) === ':')
       { console[debugType](itemStr,args[i],args[++i]); }
       else
@@ -72,5 +74,9 @@ if(!window.console){window.console = {};}
         let indx = 0;
         for(let k in o){ if(typeof(o[k]) === 'object'){ formatOutput(o[k],indx); } indx++; }
       }
+    }
+    function checkTypeFromSettings(s)
+    {
+      return (~String(s).indexOf('CONSOLE_DEBUG_')) ? s.replace('CONSOLE_DEBUG_','').toLowerCase() : 'log' ;
     }
   };
