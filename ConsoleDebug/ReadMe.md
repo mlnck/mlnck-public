@@ -9,14 +9,14 @@ With the built in _console.log_ method you would see something along the lines o
 With the _console.debug_ method you will see something along the lines of:
 ![Console Log](console-debug.png)
 
-##Usage:
+## Usage:
 Import the script into your page.
 That will allow you access to the _console.debug_ method.
 
 By default each item that you log will be logged on its own line.
 There will be recursively nested tables that display for each array and object within the item.
 
-###Options
+### Options
 In addition to displaying the format using _console.log_ you can also specify to use _info_, _warn_, or _error_.
 You do this by passing the display option as the first argument:
 ```javascript
