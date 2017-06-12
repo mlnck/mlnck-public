@@ -1,5 +1,9 @@
 //author @mlnck
 if(!window.console){window.console = {};}
+  //TODO: Group Level Creation/Settings
+  //TODO: Settings key in console objects - check for unique (global settings can only be called once)
+  //TODO: Settings key in console objects - check for at start (global settings can only be called before any other console.debug)
+
   //log level pseudo-constants
   console.DEBUG = 'CONSOLE_DEBUG_LOG_DEBUG'; console.NORM = 'CONSOLE_DEBUG_LOG_NORMAL'; console.PROD = 'CONSOLE_DEBUG_LOG_PRODUCTION';
   //type pseudo-constants
