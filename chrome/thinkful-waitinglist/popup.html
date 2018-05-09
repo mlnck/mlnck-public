@@ -1,0 +1,33 @@
+ <!DOCTYPE html>
+  <html>
+    <head>
+      <style>
+        button { outline: none; }
+        input[type="checkbox"]{ cursor:pointer; }
+        label{ cursor:pointer; }
+        li{ list-style: none; padding:5px; }
+        li:nth-child(odd){ background-color:#e5e5e5; }
+
+
+        #student-list-container{ border:1px solid black; margin:5px; padding:5px; width:300px; }
+      </style>
+    </head>
+    <body>
+      <button id="refreshStudentList">Refresh</button>
+      <div id="student-list-container">
+        <fieldset>
+          <legend>Active</legend>
+            <ul id="active-student-list">
+            </ul>
+        </fieldset>
+
+        <fieldset>
+          <legend>In-Active</legend>
+            <ul id="inactive-student-list">
+            </ul>
+        </fieldset>
+
+      </div>
+      <script src="popup.js"></script>
+    </body>
+  </html>
