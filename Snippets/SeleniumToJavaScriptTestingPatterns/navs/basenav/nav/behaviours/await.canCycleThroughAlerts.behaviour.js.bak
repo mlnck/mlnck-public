@@ -1,0 +1,136 @@
+import React from 'react';
+import e2eValidator from '../validator.e2e'
+import AwaitableAssertableActionBehaviour from '../../../../_patterns/behaviour/AwaitableAssertableActionBehaviour'
+
+import { enzymeElement } from  '../../../../_utils/enzyme.utils'
+import { getAlertResponses } from '../../../../_mocks/navs/basenav'
+
+import SinonSingleton from '../../../../_patterns/singleton/singletonBase.pattern'
+import AlertCards from '../../../../../client/components/alerts/AlertCards'
+
+export default class AwaitBehaviourCanCycleThroughAlerts extends AwaitableAssertableActionBehaviour
+{
+  constructor(Route,o={})
+  {
+    super(Route,o);
+  }
+
+  PerformYields(arr,rte,o)
+  {
+    var gE = generateExecution();
+    for(let i=0; i<arr.length; i++)
+    { console.log(gE.next().value); }
+
+    function* generateExecution()
+    {
+      var curStart = 0;
+      while(true)
+      {
+        var cur = curStart++;
+        yield* eval(arr[cur])()
+      }
+    }
+
+    function* PerformPreAwaitAction()
+    {
+      console.log('Alerts Box Begins Closed');
+      rte.Validate().elementHasClass(rte.Map.alerts,'active',false)
+
+// console.log('rte.Map:',rte.Map.header.get(0).props.children[2].props.children);
+      const getAlertsStub  = rte.Sinon.setStub(rte.Map.alertCardComponent.props().actions,'getAlerts');
+      getAlertsStub.callsFake((o)=>console.log('calling this?',o))
+
+      // rte.Map.alertCardComponent.props().actions.getAlerts.onCall(0).returns(2);
+      // rte.Map.alertCardComponent.props().actions.getAlerts.onCall(1).returns(getAlertResponses[0]);
+      // rte.Map.alertCardComponent.props().actions.getAlerts.onCall(2).returns(getAlertResponses[1]);
+
+      // getAlertsStub.onCall(0).returns(2);//initial load -count only
+      // getAlertsStub.onCall(1).returns(getAlertResponses[0]);
+      // getAlertsStub.onCall(2).returns(getAlertResponses[1]);
+
+      console.log('spy/stub on getalerts --= return correct info and see if that updates mounted state correctly within mounted obj');
+      console.log('you can see that getAlerts is passing in different info each time so that can be used to extend the functionality');
+
+      yield rte.Map.alerts.simulate('click')
+    }
+
+    function* PerformPreAwaitAssert()
+    {
+      rte.Sinon.getStub(true)
+      console.log('Alerts Box Opens On Click');
+      rte.Validate().elementHasClass(rte.Map.alerts,'active',true);
+      // rte.Sinon.getSpy(true)
+      yield 'SPY / wait for & Verify dropdown open'
+    }
+
+    function* PerformAwaitAction()
+    {
+
+      //mount
+      // console.log('rte:',rte.Map.props.get(0).props.children[2].props.children[1]);
+      // rte.Map.props.get(0).props.children[2].props.children[1].simulate('click')
+
+      // console.log('alertCardsDropdownSpy0:');
+      // console.log(rte.Sinon.getSpy(true));
+      // toggleAlertsCards
+      // console.log('xmnt:',rte.Map.header.props().children[2].props.children[1].props.toggleAlertsCards);
+      // console.log('xmnt:',rte.Map.header.props().children[2].props);
+      // console.log('xmnt:',rte.Map.alerts.props());
+
+
+      // console.log('0mount:',rte.Map.alerts.props());
+      // console.log('1mount:',rte.Map.alerts.props().onClick);
+      // console.log('2mount:',rte.Map.alerts.props().children[0].props.children[1].props);
+      //
+      // console.log('rte:',rte.Map.alerts.simulate('click'));
+
+      /*
+      console.log('->',rte.Map.header.props().children[2].props.children[1].html());
+
+      console.log('alertCardsDropdownSpy1:');
+      // console.log(rte.Sinon.getSpy(true));
+      console.log('alertCardsDropdownSpy:',alertCardsDropdownSpy.returnValues);
+      */
+
+      // const alertCardComponent = enzymeElement(rte.Map.alertCardComponent);
+      // // console.log('rte.Map.alertCardComponent:',alertCardComponent);
+      // console.log('html:',rte.Map.alerts.html());
+      // // alertCardComponent.simulate('click')
+      // rte.Map.alerts.simulate('click')
+      // console.log('html2:',rte.Map.alerts.html());
+      // let alertCardsDropdownSpy = rte.Sinon.spyOnFunction(rte.Map.alerts.toggleAlertsCards)
+      // rte.Sinon.getSpy(true);
+
+      // console.log('xmount:',rte.Map.alertCard);
+
+      let testState = {
+        alertsActive:true,
+        loadingAlerts:false,
+        alerts:{length:2}
+      }
+      // console.log('rte.Map.:',rte.Map.header.props().children[2].props.children[1].props);
+      console.log('tstr');
+      // const tstr = rte.Map.alertCardComponent.tap(n=console.log(n.debug));
+      // console.log(rte.Map.alertCardComponent.props().actions);
+      console.log('endtstr');
+      // // console.log('tstr:',rte.setState(testState));
+      // console.log(tstr.getState());
+      // // console.log('.....',tstr.setState(testState));
+      // console.log('xxx',rte.Map.alertCardComponent.html());
+
+      yield 'enzyme dive into alert, nav button click'
+    };
+    function* PerformAwaitAssert()
+    {
+      yield 'SPY / wait for & Verify new content'
+    };
+    function* PerformPostAwaitAction()
+    {
+      yield 'enzyme alert linkto button simulate click'
+    };
+    function* PerformPostAwaitAssert()
+    {
+      yield 'SPY verify action dispatched to change route'
+    };
+  }
+}

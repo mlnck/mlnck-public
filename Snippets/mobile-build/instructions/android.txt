@@ -1,0 +1,26 @@
+## Deploy to Google Play (android device)
+
+> If you have not created a signing certificate do so by running:
+> `$ keytool -genkey -alias Circulation-App -keyalg RSA -keysize 2048 -validity 10000`
+> And follow the prompts (_**make sure to remember your password**_)
+
+1. Update _version_ attribute of _widget_ node of `/config.xml`
+2. `$ npm run android:dev`
+3. After build completes open `PATH_TO_REPO/platforms/android` directory in _Android Studio_
+4. Select _Upgrade Gradle_ if/when asked
+5. Change `Build Variant` to _release_
+6. Sync Gradle
+7. From the _toolbar_
+  - `Build > Build APK(s)`
+8. `$ cd PATH_TO_REPO/platforms/android/app/build/outputs/apk/release`
+9. `$ jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 app-release-unsigned.apk Circulation-App`
+  - Enter jarsigner password when asked
+10. `$ $ANDROID_HOME/build-tools/28.0.0-rc1/zipalign 4 app-release-unsigned.apk Circulation-App.apk`
+11. Verify above has worked with: `$ jarsigner -verify -verbose -certs Circulation-App.apk`
+12. Navigate to [Google Play](https://play.google.com/apps/publish/?account=7825003501172106925#AppListPlace)
+13. Select Application
+14. Release Management > App releases > Production > Manage > Create Release
+15. Drag signed _.apk_ file into DropZone
+16. Save
+17. Review
+18. Rollout

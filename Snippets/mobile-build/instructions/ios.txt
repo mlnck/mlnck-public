@@ -1,0 +1,14 @@
+## Deploy to Test Flight (ios device testing)
+
+1. Run `npm run startios:device`
+2. After build is complete, Xcode will open. Navigate to the project settings and make sure the following settings are as follows:
+  * Identity: Edit the Version and Build numbers as appropriate
+  * Signing: Turn off automatically managed signing
+  * Signing (debug):
+    - Provisioning Profile: Circulation, Inc.
+  * Signing (Release):
+    - Provisioning Profile: Circulation, Inc.
+3. Initiate an archive build by holding alt and clicking the Play button in the upper left (or go to Product > Archive)
+4. Once the build is complete, the Organizer window will open. Select your new build & click 'Upload to App Store'
+5. Navigate to iTunes Connect, and check that the new build is listed under My Apps > Activity > All Builds. It should say 'Processing'.
+6. Once processing is complete (takes ~10 minutes), the new build will be available in the Test Flight tab.

@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Site Navigation Top Bar Navigation Layout is unchanged 1`] = `
+<header
+  className="relative-position"
+  onKeyDown={[Function]}
+>
+  <i
+    aria-hidden="true"
+    className="fa fa-2x fa-bars"
+    onClick={[Function]}
+  />
+  <div
+    className="left-side-block"
+  >
+    <a
+      className="logo"
+      onClick={[Function]}
+    >
+      <img
+        alt="Circulation logo"
+        src="/dist/images/logo-c.png"
+      />
+    </a>
+  </div>
+  <div
+    className="right-side-block"
+  >
+    <div
+      className="user-block "
+      onClick={[Function]}
+    >
+      <div
+        className="user-icon"
+      >
+        M
+      </div>
+      <span
+        className="user-name"
+      >
+        Mary
+         
+        Irving
+      </span>
+      <div
+        className="triangle"
+      />
+    </div>
+  </div>
+  <div
+    className="mobile-search input "
+  />
+</header>
+`;
