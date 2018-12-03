@@ -1,0 +1,22 @@
+<html>
+<body>
+  <div>
+    CHOOSE CORPUS(ES): &nbsp;&nbsp;
+      <input id="rhcb" type="checkbox" name="corpus" value="ROBIN_HOOD" disabled/><label for="rhcb">Robin Hood</label>
+      &nbsp;&nbsp;
+      <input id="nlcb" type="checkbox" name="corpus" value="THE_NIGHT_LAND" disabled/><label for="nlcb">The Night Land</label>
+  </div>
+  <div>  
+    <button id="btn-title" type="button" name="Title">Generate Title</button>
+    <button id="btn-sentence" type="button" name="Sentence">Generate Sentence</button>
+    <button id="btn-paragraph" type="button" name="Paragraph">Generate Paragraph</button>
+    <button id="btn-book" type="button" name="Book">Generate Book</button>
+  </div>
+  <div>
+    <h3 id="txt-header"></h3>
+    <p id="txt-output"></p>
+  </div>
+
+  <script src="./markov.js"></script>
+</body>
+</html>
