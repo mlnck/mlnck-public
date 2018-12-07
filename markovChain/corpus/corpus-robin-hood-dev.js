@@ -3,9 +3,9 @@ export const ROBIN_HOOD = `CHAPTER    I       How Robin Hood Became an Outlaw
      CHAPTER    II      How Robin Hood Met Little John
 
      CHAPTER    III     How Robin Hood Turned Butcher, and Entered the
-                        Sheriff’s Service
+                        Sheriff&rsquo;s Service
 
-     CHAPTER    IV      How Little John Entered the Sheriff’s Service
+     CHAPTER    IV      How Little John Entered the Sheriff&rsquo;s Service
 
      CHAPTER    V       How the Sheriff Lost Three Good Servants, and
                         Found Them Again
@@ -14,9 +14,9 @@ export const ROBIN_HOOD = `CHAPTER    I       How Robin Hood Became an Outlaw
 
      CHAPTER    VII     How Robin Hood Met Friar Tuck
 
-     CHAPTER    VIII    How Allan-a-Dale’s Wooing Was Prospered
+     CHAPTER    VIII    How Allan-a-Dale&rsquo;s Wooing Was Prospered
 
-     CHAPTER    IX      How the Widow’s Three Sons Were Rescued
+     CHAPTER    IX      How the Widow&rsquo;s Three Sons Were Rescued
 
      CHAPTER    X       How a Beggar Filled the Public Eye
 
@@ -25,7 +25,7 @@ export const ROBIN_HOOD = `CHAPTER    I       How Robin Hood Became an Outlaw
      CHAPTER    XII     How Maid Marion Came Back to Sherwood Forest;
                         Also, How Robin Hood Came Before Queen Eleanor
 
-     CHAPTER    XIII    How the Outlaws Shot in King Harry’s Tourney
+     CHAPTER    XIII    How the Outlaws Shot in King Harry&rsquo;s Tourney
 
      CHAPTER    XIV     How Robin Hood Was Sought of the Tinker
 
@@ -68,8 +68,8 @@ HOW ROBIN HOOD BECAME AN OUTLAW
 
 In the days of good King Harry the Second of England--he of the warring
 sons--there were certain forests in the north country set aside for the
-King’s hunting, and no man might shoot deer therein under penalty of
-death. These forests were guarded by the King’s Foresters, the chief
+King&rsquo;s hunting, and no man might shoot deer therein under penalty of
+death. These forests were guarded by the King&rsquo;s Foresters, the chief
 of whom, in each wood, was no mean man but equal in authority to the
 Sheriff in his walled town, or even to my lord Bishop in his abbey.
 
@@ -82,13 +82,13 @@ He was a comely, well-knit stripling, and as soon as he was strong
 enough to walk his chief delight was to go with his father into the
 forest. As soon as his right arm received thew and sinew he learned to
 draw the long bow and speed a true arrow. While on winter evenings his
-greatest joy was to hear his father tell of bold Will o’ the Green, the
-outlaw, who for many summers defied the King’s Foresters and feasted
-with his men upon King’s deer. And on other stormy days the boy learned
+greatest joy was to hear his father tell of bold Will o&rsquo; the Green, the
+outlaw, who for many summers defied the King&rsquo;s Foresters and feasted
+with his men upon King&rsquo;s deer. And on other stormy days the boy learned
 to whittle out a straight shaft for the long bow, and tip it with gray
 goose feathers.
 
-The fond mother sighed when she saw the boy’s face light up at these
+The fond mother sighed when she saw the boy&rsquo;s face light up at these
 woodland tales. She was of gentle birth, and had hoped to see her son
 famous at court or abbey. She taught him to read and to write, to doff
 his cap without awkwardness and to answer directly and truthfully both
@@ -97,15 +97,15 @@ of breeding, was yet happiest when he had his beloved bow in hand and
 strolled at will, listening to the murmur of the trees.
 
 Two playmates had Rob in these gladsome early days. One was Will
-Gamewell, his father’s brother’s son, who lived at Gamewell Lodge, hard
+Gamewell, his father&rsquo;s brother&rsquo;s son, who lived at Gamewell Lodge, hard
 by Nottingham town. The other was Marian Fitzwalter, only child of the
 Earl of Huntingdon. The castle of Huntingdon could be seen from the top
 of one of the tall trees in Sherwood; and on more than one bright day
-Rob’s white signal from this tree told Marian that he awaited her there:
+Rob&rsquo;s white signal from this tree told Marian that he awaited her there:
 for you must know that Rob did not visit her at the castle. His father
 and her father were enemies. Some people whispered that Hugh Fitzooth
 was the rightful Earl of Huntingdon, but that he had been defrauded out
-of his lands by Fitzwalter, who had won the King’s favor by a crusade to
+of his lands by Fitzwalter, who had won the King&rsquo;s favor by a crusade to
 the Holy Land. But little cared Rob or Marian for this enmity, however
 it had arisen. They knew that the great green--wood was open to them,
 and that the wide, wide world was full of the scent of flowers and the

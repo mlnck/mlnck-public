@@ -4,6 +4,7 @@
   "description": "markov chain base",
   "main": "markov.js",
   "scripts": {
+    "build": "parcel build index.html",
     "test": "test",
     "start": "parcel index.html"
   },

@@ -67,7 +67,7 @@ console.log("corpi:",corpi);
   let re = /\s/g,
   str = corpi.map(itm => itm),
   result = re[Symbol.split](str);// split corpus
-  
+
   result = result
                 //remove whitespace
                 //remove all caps if greater than 1 character
@@ -100,19 +100,19 @@ console.log("corpi:",corpi);
 
 const updateCorpi = () =>
 {
-  chainCorpus = []
-  corpusObj = {}
-  console.log("chainCorpusAFTErPOP:",chainCorpus);
-  const checkedBoxes = document.querySelectorAll('input:checked')
-  checkedBoxes.forEach(itm => 
-  {
-    // console.log("itm:",itm.getAttribute('value'))
-    // chainCorpus.push(corpus[itm.getAttribute('value')])
-    chainCorpus.push(corpus['ROBIN_HOOD'])
-    chainCorpus.push(corpus['THE_NIGHT_LAND'])
-  });
-  console.log("chainCorpus:",chainCorpus);
-  generateMarkovChain(chainCorpus)
+  // chainCorpus = []
+  // corpusObj = {}
+  // console.log("chainCorpusAFTErPOP:",chainCorpus);
+  // const checkedBoxes = document.querySelectorAll('input:checked')
+  // checkedBoxes.forEach(itm =>
+  // {
+  //   // console.log("itm:",itm.getAttribute('value'))
+  //   // chainCorpus.push(corpus[itm.getAttribute('value')])
+  //   chainCorpus.push(corpus['ROBIN_HOOD'])
+  //   chainCorpus.push(corpus['THE_NIGHT_LAND'])
+  // });
+  // console.log("chainCorpus:",chainCorpus);
+  // generateMarkovChain(chainCorpus)
 }
 
 const generateTitle = () =>
@@ -139,15 +139,15 @@ const generateTitle = () =>
   let curIteration = 1, //while loop -start at 1 to preserve numbering
       curStr = getStartingPoint(),
       fullStr = curStr
-      
+
   while(curIteration < maxIteration)
   {
     curIteration++;
-    
+
     let randPos = Math.floor(Math.random()*corpusObj[curStr].length),
         addendum = ` ${corpusObj[curStr][randPos]}`
-      
-    
+
+
     fullStr += addendum
     curStr = curStr.split(' ').pop()
     curStr += addendum
@@ -155,7 +155,8 @@ const generateTitle = () =>
   fullStr = fullStr
               .replace(/[.,;]/g,'')
               .toUpperCase()
-  
+              .replace(/&..QUO/g,'')
+
   //remove disallowed beginning and endings
   fullStr = fullStr.split(' ')
   //Not 100% (could potentially have multiple disallowed words next to each other)
@@ -164,10 +165,10 @@ const generateTitle = () =>
   for(let i=DISALLOWED_TITLE_ENDING.length-1; i>=0; i--)
   { if(fullStr[fullStr.length-1] === DISALLOWED_TITLE_ENDING[i]){ fullStr.pop() } }
   fullStr = fullStr.join(' ')
-  
-  document.getElementById('txt-header').innerText='Title:'
-  document.getElementById('txt-output').innerText=fullStr
-  
+
+  document.getElementById('txt-header').innerHTML='Title:'
+  document.getElementById('txt-output').innerHTML=fullStr
+
   return fullStr
 }
 
@@ -179,7 +180,7 @@ const generateSentence = () =>
       Walk chain until you hit a period
         Place limit at 45-55 words.
   */
-  
+
   const maxIteration = Math.round(Math.random()*10+45) // will give us 45-55
   let curIteration = 1, //while loop -start at 1 to preserve numbering
       curStr = getStartingPoint(),
@@ -187,29 +188,29 @@ const generateSentence = () =>
 
   if(~fullStr.indexOf('.')) //don't allow a sentence to start with a period
   { return generateSentence() }
-  
+
   while(curIteration < maxIteration && !~fullStr.indexOf('.'))
   {
     curIteration++;
-    
+
     let randPos = Math.floor(Math.random()*corpusObj[curStr].length),
         addendum = ` ${corpusObj[curStr][randPos]}`
-      
-    
+
+
     fullStr += addendum
     curStr = curStr.split(' ').pop()
     curStr += addendum
   }
-  
+
   if(curIteration === maxIteration)
   { fullStr += '.'; }
 
   //Capitalize first Letter
   fullStr = uppercaseStart(fullStr)
-  
-  document.getElementById('txt-header').innerText='Sentence:'
-  document.getElementById('txt-output').innerText=fullStr
-  
+
+  document.getElementById('txt-header').innerHTML='Sentence:'
+  document.getElementById('txt-output').innerHTML=fullStr
+
   return fullStr;
 }
 
@@ -226,9 +227,9 @@ const generateParagraph = () =>
 
   while(curLoop++ < sntncNum)
   { para += `${generateSentence()} ` }
-  
-  document.getElementById('txt-header').innerText='Paragraph:'
-  document.getElementById('txt-output').innerText=para
+
+  document.getElementById('txt-header').innerHTML='Paragraph:'
+  document.getElementById('txt-output').innerHTML=para
 }
 
 const generateBook = () =>
@@ -238,17 +239,17 @@ const generateBook = () =>
       Generate 8-31 paragraphs
         5% generate a 'tome' (8-10x as long as normal book)
   */
-  
+
   console.log("generateBook:");
   const paraNum = Math.floor(Math.random()*23+8)
   let curLoop = 0,
       book = ''
 
   while(curLoop++ < paraNum)
-  { book += `${generateSentence()}\r\n\r\n` }
-  
-  document.getElementById('txt-header').innerText=generateTitle()
-  document.getElementById('txt-output').innerText=book
+  { book += `<p>${generateSentence()}</p>` }
+
+  document.getElementById('txt-header').innerHTML=generateTitle()
+  document.getElementById('txt-output').innerHTML=book
 }
 
 Listeners({generateTitle, generateSentence, generateParagraph, generateBook, updateCorpi})
