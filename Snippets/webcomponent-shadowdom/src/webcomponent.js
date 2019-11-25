@@ -11,6 +11,8 @@
     connectedCallback()
     {
       console.log('connected')
+      // handleAttributesDefinedByPageAuthor() //https://developers.google.com/web/fundamentals/web-components/best-practices#dont-override
+      // lazyLoadProperties() //https://developers.google.com/web/fundamentals/web-components/best-practices#lazy-properties
       customElements.whenDefined('web-component').then(() => {
         console.log('defined') // add nested shadow elements after defined
       })
