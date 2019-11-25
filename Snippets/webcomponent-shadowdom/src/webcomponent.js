@@ -1,6 +1,12 @@
 (function(){
   let tmpl = document.createElement('template')
-      tmpl.innerHTML = `<style>:host{}</style><p>shadow dom</p><slot></slot>`
+      tmpl.innerHTML = `<style>
+      :host { display: block; }
+      :host([hidden]) { display: none; }
+      :host([checked]) { }
+      :host([disabled]) { }
+      :host([checked][disabled]) { }
+      </style><p>shadow dom</p><slot></slot>`
   class WebComponent extends HTMLElement
   {
     constructor() {
