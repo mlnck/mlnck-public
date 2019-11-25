@@ -6,7 +6,13 @@
       :host([checked]) { }
       :host([disabled]) { }
       :host([checked][disabled]) { }
-      </style><p>shadow dom</p><slot></slot>`
+
+      ${/*
+        :host-context(.darktheme){} <-styles if host is descendant of .darktheme
+        ::slotted(<compound-selector>){} <- matches toplevel nodes in a <slot>
+      */}
+      </style>
+      <p>shadow dom</p><slot name="shadow-slot">fallback content is here</slot>`
   class WebComponent extends HTMLElement
   {
     constructor() {
