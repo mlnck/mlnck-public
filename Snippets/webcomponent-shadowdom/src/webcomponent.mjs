@@ -17,6 +17,7 @@
   {
     constructor() {
       super()
+      this._onSlotChange = this._onSlotChange.bind(this); // binds `slot.this` to `this`
       let shadowRoot = this.attachShadow({mode: 'open'})
       shadowRoot.appendChild(tmpl.content.cloneNode(true))
     }
@@ -28,6 +29,11 @@
       customElements.whenDefined('web-component').then(() => {
         console.log('defined') // add nested shadow elements after defined
       })
+
+      //  Promise.all([ //Remove when `slotchange` support recognizes initial load
+      //   customElements.whenDefined('nestedone-webcomponent'),
+      //   customElements.whenDefined('nestedtwo-webcomponent'),
+      // ]).then(_ => this._handleNestedComponentsLoaded());
     }
     disconnectedCallback()
     { console.log('disconnected') }
@@ -40,6 +46,8 @@
     */
     attributeChangedCallback(attrName, oldVal, newVal)
     {/* handle side effects only - get/set for logic */}
+
+    _handleNestedComponentsLoaded() {}
   }
   window.customElements.define('web-component', WebComponent)
 })()
